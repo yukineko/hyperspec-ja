@@ -49,8 +49,7 @@ clause::= normal-clause | otherwise-clause
 <P><B>Description:</B><P>
  <P>
 これらの<A REL=DEFINITION HREF="26_glo_m.htm#macro"><I>macros</I></A>は <I>test-key</I>と一致する<I>clause</I>を選択し, 選択された<I>forms</I>を実行する. <P>
-<I>keyform</I> や <I>keyplace</I> は <I>実行されると
-</I> <I>test-key</I>を生成する. <P>
+<I>keyform</I> や <I>keyplace</I> は <I>実行されると</I> <I>test-key</I>を生成する. <P>
 <I>normal-clauses</I>はそれぞれ順番に評価される. <I>test-key</I>が節の<A REL=DEFINITION HREF="26_glo_k.htm#key"><I>key</I></A>と<A REL=DEFINITION HREF="26_glo_s.htm#same"><I>同じ</I></A>場合, その<I>節</I>の<I>forms</I> は<A REL=DEFINITION HREF="26_glo_i.htm#implicit_progn"><I>implicit progn</I></A>として<I>評価され</I>, その<A REL=DEFINITION HREF="26_glo_f.htm#form"><I>form</I></A>の返す<A REL=DEFINITION HREF="26_glo_v.htm#value"><I>values</I></A>が<A REL=DEFINITION HREF="#case"><B>case</B></A>, <A REL=DEFINITION HREF="#ccase"><B>ccase</B></A>, あるいは <A REL=DEFINITION HREF="#ecase"><B>ecase</B></A>の戻り値となる . <P>
 節に一致しなかったときに, これらの<A REL=DEFINITION HREF="26_glo_m.htm#macro"><I>macros</I></A>の<I>振舞い</I>に特に違いがでる. <P>
 <P><DL><P>
@@ -58,12 +57,12 @@ clause::= normal-clause | otherwise-clause
 <I>通常の節</I>に一致しなかったとき, <I>otherwise-clause</I>があれば, <I>otherwise-clause</I>に自動的に一致する. その<I>節</I>の<I>forms</I>が<A REL=DEFINITION HREF="26_glo_i.htm#implicit_progn"><I>implicit progn</I></A>として<I>評価され</I>, <A REL=DEFINITION HREF="#case"><B>case</B></A>の戻り値として<A REL=DEFINITION HREF="26_glo_v.htm#value"><I>values</I></A>を返す. <P>
 <I>otherwise-clause</I>がない場合, <A REL=DEFINITION HREF="#case"><B>case</B></A>は<A REL=DEFINITION HREF="a_nil.htm#nil"><B>nil</B></A>を返す. <P>
 <DT><A REL=DEFINITION HREF="#ccase"><B>ccase</B></A>  <P><DD>
-      <I>normal-clause</I>に一致しない場合, <A REL=DEFINITION HREF="26_glo_t.htm#type"><I>type</I></A>の<A REL=DEFINITION HREF="26_glo_c.htm#correctable"><I>correctable</I></A> <A REL=DEFINITION HREF="26_glo_e.htm#error"><I>error</I></A>として<A REL=DEFINITION HREF="e_tp_err.htm#type-error"><B>type-error</B></A>がシグナルされる. The offending データが その<I>test-key</I>であり, and the expected type is <A REL=DEFINITION HREF="26_glo_t.htm#type_equivalent"><I>type equivalent</I></A> to <TT>(member </TT><I>key1</I><TT> </TT><I>key2</I><TT> ...)</TT>. The <A REL=DEFINITION HREF="a_store_.htm#store-value"><B>store-value</B></A> <A REL=DEFINITION HREF="26_glo_r.htm#restart"><I>restart</I></A> can be used to correct the error. <P>
+      <I>normal-clause</I>に一致しない場合, <A REL=DEFINITION HREF="26_glo_t.htm#type"><I>type</I></A>の<A REL=DEFINITION HREF="26_glo_c.htm#correctable"><I>correctable</I></A> <A REL=DEFINITION HREF="26_glo_e.htm#error"><I>error</I></A>として<A REL=DEFINITION HREF="e_tp_err.htm#type-error"><B>type-error</B></A>がシグナルされる. The offending データが その<I>test-key</I>であり, and the expected type is <A REL=DEFINITION HREF="26_glo_t.htm#type_equivalent"><I>type equivalent</I></A> to <TT>(member </TT><I>key1</I><TT> </TT><I>key2</I><TT> ...)</TT>. The <A REL=DEFINITION HREF="a_store_.htm#store-value"><B>store-value</B></A> <A REL=DEFINITION HREF="26_glo_r.htm#restart"><I>restart</I></A>でエラーをただしく使えるようにできる. <P>
 <A REL=DEFINITION HREF="a_store_.htm#store-value"><B>store-value</B></A> <A REL=DEFINITION HREF="26_glo_r.htm#restart"><I>restart</I></A>が実行された場合, その <A REL=DEFINITION HREF="26_glo_a.htm#argument"><I>引数</I></A>が新しい<I>test-key</I>となり, <TT>(setf </TT><I>keyplace</I><TT> </TT><I>test-key</I><TT>)</TT>のように<I>keyplace</I>に保持される. <A REL=DEFINITION HREF="#ccase"><B>ccase</B></A>の再実行時には, それぞれの<I>節</I>が新しくなったっと考える. <P>
- The subforms of <I>keyplace</I> might be evaluated again if none of the cases holds. <P>
+caseがない場合でも<I>keyplace</I>のサブフォームが再度評価されるかもしれない.<P>
 <DT><A REL=DEFINITION HREF="#ecase"><B>ecase</B></A>  <P><DD>
-If no <I>normal-clause</I> matches, a <A REL=DEFINITION HREF="26_glo_n.htm#non-correctable"><I>non-correctable</I></A> <A REL=DEFINITION HREF="26_glo_e.htm#error"><I>error</I></A> of <A REL=DEFINITION HREF="26_glo_t.htm#type"><I>type</I></A> <A REL=DEFINITION HREF="e_tp_err.htm#type-error"><B>type-error</B></A> is signaled. The offending datum is the <I>test-key</I> and the expected type is <A REL=DEFINITION HREF="26_glo_t.htm#type_equivalent"><I>type equivalent</I></A> to <TT>(member </TT><I>key1</I><TT> </TT><I>key2</I><TT> ...)</TT>. <P>
-Note that in contrast with <A REL=DEFINITION HREF="#ccase"><B>ccase</B></A>, the caller of <A REL=DEFINITION HREF="#ecase"><B>ecase</B></A> may rely on the fact that <A REL=DEFINITION HREF="#ecase"><B>ecase</B></A> does not return if a <I>normal-clause</I> does not match. <P>
+<I>通常の節</I>に一致しない場合には, <A REL=DEFINITION HREF="26_glo_t.htm#type"><I>type</I></A> <A REL=DEFINITION HREF="e_tp_err.htm#type-error"><B>type-error</B></A>の<A REL=DEFINITION HREF="26_glo_n.htm#non-correctable"><I>non-correctable</I></A> <A REL=DEFINITION HREF="26_glo_e.htm#error"><I>error</I></A>がシグナルされる. The offendingデータがその<I>test-key</I>であり予期した型の場合は<A REL=DEFINITION HREF="26_glo_t.htm#type_equivalent"><I>type equivalent</I></A> to <TT>(member </TT><I>key1</I><TT> </TT><I>key2</I><TT> ...)</TT>. <P>
+<A REL=DEFINITION HREF="#ccase"><B>ccase</B></A>と対照的なのは, <A REL=DEFINITION HREF="#ecase"><B>ecase</B></A>では一致するものがなかった時には何も返さなようになっているという点である. <P>
 <P></DL><P>
 <P><B>Examples:</B><P>
  <P>
@@ -101,13 +100,13 @@ Note that in contrast with <A REL=DEFINITION HREF="#ccase"><B>ccase</B></A>, the
 </TT> <P>
 <P><B>Side Effects:</B><P>
  <P>
-The debugger might be entered. If the <A REL=DEFINITION HREF="a_store_.htm#store-value"><B>store-value</B></A> <A REL=DEFINITION HREF="26_glo_r.htm#restart"><I>restart</I></A> is invoked, the <A REL=DEFINITION HREF="26_glo_v.htm#value"><I>value</I></A> of <I>keyplace</I> might be changed. <P>
+デバッガに入ったときにあらわれる. <A REL=DEFINITION HREF="a_store_.htm#store-value"><B>store-value</B></A> が <A REL=DEFINITION HREF="26_glo_r.htm#restart"><I>restart</I></A>が実行された場合, その<I>keyplace</I>の<A REL=DEFINITION HREF="26_glo_v.htm#value"><I>value</I></A> は変化するかもしれない. <P>
 <P><B>Affected By:</B><P>
  <P>
-<A REL=DEFINITION HREF="#ccase"><B>ccase</B></A> and <A REL=DEFINITION HREF="#ecase"><B>ecase</B></A>, since they might signal an error, are potentially affected by existing <I>handlers</I> and <A REL=DEFINITION HREF="v_debug_.htm#STdebug-ioST"><B>*debug-io*</B></A>. <P>
+<A REL=DEFINITION HREF="#ccase"><B>ccase</B></A> と <A REL=DEFINITION HREF="#ecase"><B>ecase</B></A>では, シグナルやエラーがおこると, すでに存在している<I>handlers</I>と<A REL=DEFINITION HREF="v_debug_.htm#STdebug-ioST"><B>*debug-io*</B></A>に影響をあたえる可能性がある. <P>
 <P><B>Exceptional Situations:</B><P>
  <P>
-<A REL=DEFINITION HREF="#ccase"><B>ccase</B></A> and <A REL=DEFINITION HREF="#ecase"><B>ecase</B></A> signal an error of <A REL=DEFINITION HREF="26_glo_t.htm#type"><I>type</I></A> <A REL=DEFINITION HREF="e_tp_err.htm#type-error"><B>type-error</B></A> if no <I>normal-clause</I> matches. <P>
+<A REL=DEFINITION HREF="#ccase"><B>ccase</B></A> と <A REL=DEFINITION HREF="#ecase"><B>ecase</B></A> では通常節に一致しない場合, <I>type</I></A> <A REL=DEFINITION HREF="e_tp_err.htm#type-error"><B>type-error</B></A>のシグナルやエラーが発生する. <P>
 <P><B>See Also:</B><P>
  <P>
 <A REL=DEFINITION HREF="m_cond.htm#cond"><B>cond</B></A>, <A REL=DEFINITION HREF="m_tpcase.htm#typecase"><B>typecase</B></A>, <A REL=DEFINITION HREF="m_setf_.htm#setf"><B>setf</B></A>, <A REL=CHILD HREF="05_a.htm">Section 5.1 (Generalized Reference)</A> <P>
@@ -121,7 +120,7 @@ The debugger might be entered. If the <A REL=DEFINITION HREF="a_store_.htm#store
   (cond {((member #1# '(key*)) form*)}*))
 </PRE>
 </TT> <P>
-The specific error message used by <A REL=DEFINITION HREF="#ecase"><B>ecase</B></A> and <A REL=DEFINITION HREF="#ccase"><B>ccase</B></A> can vary between implementations. In situations where control of the specific wording of the error message is important, it is better to use <A REL=DEFINITION HREF="#case"><B>case</B></A> with an <I>otherwise-clause</I> that explicitly signals an error with an appropriate message. <P>
+<A REL=DEFINITION HREF="#ecase"><B>ecase</B></A> と <A REL=DEFINITION HREF="#ccase"><B>ccase</B></A> のエラーメッセージは実装によって異なる. これはエラーメッセージの語句をとりあるかうような場合には重要であり, そのような場合は<A REL=DEFINITION HREF="#case"><B>case</B></A> の <I>otherwise-clause</I> を使って厳密にシグナルやエラーを使ってメッセージを適切扱う方がよい. <P>
 <HR>
 
 <A REL=NAVIGATOR HREF="../Front/StartPts.htm"><IMG WIDTH=80 HEIGHT=40 ALT="[Starting Points]" SRC="../Graphics/StartPts.gif" ALIGN=Bottom></A><A REL=TOC HREF="../Front/Contents.htm"><IMG WIDTH=80 HEIGHT=40 ALT="[Contents]" SRC="../Graphics/Contents.gif" ALIGN=Bottom></A><A REL=INDEX HREF="../Front/X_Master.htm"><IMG WIDTH=80 HEIGHT=40 ALT="[Index]" SRC="../Graphics/Index.gif" ALIGN=Bottom></A><A REL=INDEX HREF="../Front/X_Symbol.htm"><IMG WIDTH=80 HEIGHT=40 ALT="[Symbols]" SRC="../Graphics/Symbols.gif" ALIGN=Bottom></A><A REL=GLOSSARY HREF="../Body/26_a.htm"><IMG WIDTH=80 HEIGHT=40 ALT="[Glossary]" SRC="../Graphics/Glossary.gif" ALIGN=Bottom></A><A HREF="../Front/X3J13Iss.htm"><IMG WIDTH=80 HEIGHT=40 ALT="[Issues]" SRC="../Graphics/Issues.gif" ALIGN=Bottom></A><BR>
